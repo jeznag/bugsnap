@@ -1,0 +1,8 @@
+{
+    "name": "BugSnap",
+    "version": "1.0.0",
+    "devDependencies": {
+        "grunt": "*",
+        "grunt-zip": "*"
+    }
+}
