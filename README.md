@@ -8,8 +8,7 @@ Supported trackers:
 * Rally
 * Redmine
 * YouTrack
-
-[Get it for Chrome](https://chrome.google.com/webstore/detail/bugsnap/mfodpdfcbkmkdebahlkghnegochneenh)
+* Mingle - very rough (http://screencast-o-matic.com/watch/coe6cAedF5)
 
 FireFox version will be available later.
 
