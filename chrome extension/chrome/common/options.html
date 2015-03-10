@@ -1,0 +1,107 @@
+<html>
+<head>
+<title>BugSnap Options</title>
+<script src="js/require.js" data-main="js/options.js"></script>
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+<style>
+#options {
+    margin:15px auto;
+    width:700px;
+    font-family: sans-serif;
+    font-size: 15px;
+}
+#options .label {
+    width: 140px;
+    padding-top:5px;
+    float:left;
+}
+
+.autorize {
+    padding-top:0px  !important;
+}
+#options div{
+    padding: 5px;
+
+}
+#method {
+    display: none;
+}
+
+em {
+    font-weight: bold;
+    padding-right: 1em;
+    vertical-align: top;
+}
+input[type=text] {
+    width: 300px;
+}
+input[type=password] {
+    width: 300px;
+}
+.save {
+    width : 650px;
+}
+.confirmationMessage {
+    display : none;
+    background-color: #fea;
+    padding: 3px;
+    margin-left : 10px;
+}
+
+.note {
+    font-style: italic;
+}
+
+.ui-widget input {
+    border: 1px solid gray;
+    font-size: 1.1em;
+}
+</style>
+</head>
+<body>
+<form id="optionsForm">
+    <div id="options" class='ui-widget' title="BugSnap options">
+        <div>
+            <label class="label" for="Type">Tracker Type:</label>
+            <em>*</em>
+            <select id="Type" class="required" data-bind="value: Type">
+                <option value="Gemini">Gemini 5.X</option>
+                <option value="Jira">Jira 6.X</option>
+                <option value="Rally">Rally 2.X</option>
+                <option value="Redmine">Redmine 2.X</option>
+                <option value="YouTrack">YouTrack 4.X</option>
+                <option value="Mingle">Mingle</option>
+            </select>
+        </div>
+        <div class="note" data-bind="visible: Type() == 'Redmine'">
+            You must check "Enable REST web service" in Administration - Settings - Authentication
+        </div>
+        <div data-bind="visible: UrlVisible">
+            <label class="label" for="Url">Tracker URL:</label>
+            <em>*</em><input type="text" id="Url" class="required" data-bind="value: Url">
+        </div>
+        <div>
+            <label class="label" for="Login">Login:</label>
+            <em>*</em><input type="text" id="Login" class="required" data-bind="value: Login">
+        </div>
+        <div data-bind="visible: PasswordVisible && Type() != 'Mingle'">
+            <label class="label" for="Password">Password:</label>
+            <em>*</em><input type="password" id="Password" class="" data-bind="value: Password">
+        </div>
+        <div data-bind="visible: KeyVisible || Type() == 'Mingle'">
+            <label class="label" for="Key">API Key:</label>
+            <em>*</em><input type="text" id="Key" class="required" data-bind="value: Key">
+        </div>
+        <div data-bind="visible: Type() == 'Mingle'">
+            <label class="label" for="Key">HMAC Private Key:</label>
+            <em>*</em><input type="text" id="Key" class="required" data-bind="value: Key">
+        </div>
+        <br>
+        <div class="save">
+            <input id="saveBtn" title="Save options" class="ui-button" data-bind="click: save" type="button" value="Save"/>
+            <span class="confirmationMessage"></span>
+        </div>
+    </div>
+</form>
+</body>
+</html>
